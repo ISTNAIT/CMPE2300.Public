@@ -39,14 +39,23 @@ namespace Demo_9___Dictionary
         //Doesn't recurse, just gets the top level count
         public void ParseDirectory()
         {
-            DirectoryCount = 
-                System.IO.Directory.EnumerateDirectories(Directory).Count();
+            List<string> Files = null;
+            try
+            {
+                DirectoryCount =
+                    System.IO.Directory.EnumerateDirectories(Directory).Count();
+                //Fun with collections! Distinct prob. not necessary, but for demo purposes..
+                Files = System.IO.Directory.EnumerateFiles(Directory).Distinct().ToList();
+            }
+            catch (UnauthorizedAccessException) { Files = null; } //Not allowed to look in there.
 
-            //Fun with collections! Distinct prob. not necessary, but for demo purposes..
-            List<string> Files = 
-                System.IO.Directory.EnumerateFiles(Directory).Distinct().ToList();
-            StorageSize = Files.Sum((f) => new FileInfo(f).Length); //Add up length(size)
-            FileCount = Files.Count;
+            //New nullable and null coalescing features in C# make some stuff much easier.
+            try
+            {
+                StorageSize = Files?.Sum((f) => new FileInfo(f).Length) ?? 0; //Add up length(size)
+            }
+            catch (FileNotFoundException){ } //Not sure why I get these once in a while.  Microsoft.  <Shrug>
+            FileCount = Files?.Count ?? 0;
         }
     }
 }
