@@ -55,6 +55,7 @@ namespace Demo_9___Dictionary
                 StorageSize = Files?.Sum((f) => new FileInfo(f).Length) ?? 0; //Add up length(size)
             }
             catch (FileNotFoundException){ } //Not sure why I get these once in a while.  Microsoft.  <Shrug>
+            catch (PathTooLongException) { } //Seriously? Why is this even possible?
             FileCount = Files?.Count ?? 0;
         }
     }
