@@ -44,5 +44,22 @@ namespace aja
                 kvp.Value.DirectoryCount.ToString(),
                 kvp.Value.FileCount.ToString(),
                 MemorySizeString(kvp.Value.StorageSize)});
+
+        //Compare Methods (Note that DirectoryInfo doesn't come with it's own, so..
+
+        public static int CompareTo(this DirectoryInfo me, DirectoryInfo you)
+        {
+            return me.FullName.CompareTo(you.FullName);
+        }
+
+        public static int CompareTo<TK, TV>
+            (KeyValuePair<DirectoryInfo, DirData> me,
+            KeyValuePair<DirectoryInfo, DirData> you)
+        {
+            return me.Value == you.Value ?
+                me.Value.StorageSize.CompareTo(you.Value.StorageSize)
+                : me.Key.CompareTo(you.Key);
+        }
     }
+
 }

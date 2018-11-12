@@ -58,5 +58,6 @@ namespace Demo_9___Dictionary
             catch (PathTooLongException) { } //Seriously? Why is this even possible?
             FileCount = Files?.Count ?? 0;
         }
+
     }
 }

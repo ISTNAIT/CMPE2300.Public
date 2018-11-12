@@ -94,13 +94,38 @@ namespace Demo_9___Dictionary
 
         //Display the current contents of the dictionary to the listview
         private void Populate()
-        {
+        {  
             //FIXME: Currently hacked to only take 2000 items.
             //ListView not optimized for very large sets (need some kind of cursor/dataview).
             lvData.Items.Clear();
             //Use my groovy extension method (see AJAExtension.cs) to simplify this
             foreach (KeyValuePair<DirectoryInfo, DirData> kvp in DirectoryDict.Take(2000))
                 lvData.Items.Add(kvp.LVIFromKVP());
+            Application.DoEvents();
+        }
+
+        private void btnSortExtension_Click(object sender, EventArgs e)
+        {
+            DirectoryDict = DirectoryDict.OrderByDescending(kvp=>kvp.Value.StorageSize).ThenBy(kvp=>kvp.Key.FullName)
+                .ToDictionary(kvp => kvp.Key, kvp=> kvp.Value);
+            Populate();
+        }
+
+        private void btnRemoveEmpty_Click(object sender, EventArgs e)
+        {
+            DirectoryDict = DirectoryDict
+                .Where(kvp => kvp.Value.StorageSize > 0)
+                .ToDictionary(kvp=>kvp.Key, kvp=>kvp.Value);
+            Populate();
+        }
+
+        private void btnRemoveHidden_Click(object sender, EventArgs e)
+        {
+            DirectoryDict = DirectoryDict
+                .Where(kvp => ((kvp.Key.Attributes & FileAttributes.Hidden)==0 //Winderz visible
+                && (kvp.Key.Name.Length > 0 && kvp.Key.Name[0] != '.'))) //Unix visible
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+            Populate();
         }
     }
 }
