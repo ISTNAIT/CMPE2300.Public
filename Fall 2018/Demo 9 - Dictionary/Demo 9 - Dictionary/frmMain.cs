@@ -95,9 +95,11 @@ namespace Demo_9___Dictionary
         //Display the current contents of the dictionary to the listview
         private void Populate()
         {
+            //FIXME: Currently hacked to only take 2000 items.
+            //ListView not optimized for very large sets (need some kind of cursor/dataview).
             lvData.Items.Clear();
             //Use my groovy extension method (see AJAExtension.cs) to simplify this
-            foreach (KeyValuePair<DirectoryInfo, DirData> kvp in DirectoryDict)
+            foreach (KeyValuePair<DirectoryInfo, DirData> kvp in DirectoryDict.Take(2000))
                 lvData.Items.Add(kvp.LVIFromKVP());
         }
     }
