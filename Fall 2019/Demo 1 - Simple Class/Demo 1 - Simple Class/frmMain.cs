@@ -29,6 +29,7 @@ namespace Demo_1___Simple_Class
             p = new Person("Bob", "Dobbs", Gender.Indeterminate, 100047);
             tbPeople.Text += p;
             tbPeople.Text += Environment.NewLine;
+                
         }
 
         
