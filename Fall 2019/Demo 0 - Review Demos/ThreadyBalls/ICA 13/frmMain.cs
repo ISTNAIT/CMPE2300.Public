@@ -58,6 +58,7 @@ namespace ThreadyBalls
             //NB: Start worker threads as background! Foreground threads don't
             //auto-dispose if your user kills the ui.
             Thread t = new Thread(new ParameterizedThreadStart(BallThread));
+            Thread t = new Thread(x => BallThread(x));
             t.IsBackground = true;
             t.Start(tbSize.Value);
             //I'm using a list of threads to demo some thread management stuff.
@@ -74,13 +75,15 @@ namespace ThreadyBalls
         private void BallThread(object ThreadData)
         {
             Random R = new Random();
-            for(int i = 0; i < 10; ++i)
+            //Choose a random # of balls to spawn before thread dies
+            int ballQuota = R.Next(10, 100);
+            for (int i = 0; i < ballQuota ; ++i)
             {
                 int x = R.Next(Canvas.DrawerWindowSize.Width);
                 int y = R.Next(Canvas.DrawerWindowSize.Height);
 
                 Canvas.AddEllipse(x, y, (int)ThreadData, (int)ThreadData, RandColor.GetColor());
-                Thread.Sleep(50);
+                Thread.Sleep(100);
             }
         }
 
