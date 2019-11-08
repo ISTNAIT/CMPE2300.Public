@@ -9,7 +9,7 @@ using Demo_9___Dictionary;
 
 namespace aja
 {
-    static class AJAExtensions
+    public static class AJAExtensions
     {
         public enum MemoryScale { b = 1, kb = 1024 * b, mb = 1024 * kb, gb = 1024 * mb }
         public static String MemorySizeString(this long size, MemoryScale ms)

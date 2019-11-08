@@ -59,6 +59,7 @@ namespace Demo_9___Dictionary
             fbdDialog.SelectedPath = System.Environment.GetFolderPath(
                 System.Environment.SpecialFolder.Desktop);
             DialogResult dr = fbdDialog.ShowDialog();
+            
             switch(dr)
             {
                 case DialogResult.OK:
@@ -127,5 +128,7 @@ namespace Demo_9___Dictionary
                 .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
             Populate();
         }
+
+       
     }
 }

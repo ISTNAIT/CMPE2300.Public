@@ -49,9 +49,10 @@
             // btnChooseDirectory
             // 
             this.btnChooseDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnChooseDirectory.Location = new System.Drawing.Point(12, 555);
+            this.btnChooseDirectory.Location = new System.Drawing.Point(25, 458);
+            this.btnChooseDirectory.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnChooseDirectory.Name = "btnChooseDirectory";
-            this.btnChooseDirectory.Size = new System.Drawing.Size(101, 23);
+            this.btnChooseDirectory.Size = new System.Drawing.Size(152, 35);
             this.btnChooseDirectory.TabIndex = 1;
             this.btnChooseDirectory.Text = "Choose Directory";
             this.btnChooseDirectory.UseVisualStyleBackColor = true;
@@ -60,9 +61,10 @@
             // lblPath
             // 
             this.lblPath.AutoSize = true;
-            this.lblPath.Location = new System.Drawing.Point(13, 13);
+            this.lblPath.Location = new System.Drawing.Point(20, 20);
+            this.lblPath.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPath.Name = "lblPath";
-            this.lblPath.Size = new System.Drawing.Size(66, 13);
+            this.lblPath.Size = new System.Drawing.Size(99, 20);
             this.lblPath.TabIndex = 2;
             this.lblPath.Text = "Current Path";
             // 
@@ -70,19 +72,19 @@
             // 
             this.lvData.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.lvData.AllowColumnReorder = true;
-            this.lvData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvData.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lvData.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.chPath,
             this.chDirs,
             this.chFiles,
             this.chSize});
+            this.lvData.HideSelection = false;
             this.lvData.HoverSelection = true;
-            this.lvData.Location = new System.Drawing.Point(16, 30);
+            this.lvData.Location = new System.Drawing.Point(24, 71);
+            this.lvData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lvData.MultiSelect = false;
             this.lvData.Name = "lvData";
-            this.lvData.Size = new System.Drawing.Size(792, 519);
+            this.lvData.Size = new System.Drawing.Size(1186, 368);
             this.lvData.TabIndex = 3;
             this.lvData.UseCompatibleStateImageBehavior = false;
             this.lvData.View = System.Windows.Forms.View.Details;
@@ -109,9 +111,10 @@
             // btnSortExtension
             // 
             this.btnSortExtension.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSortExtension.Location = new System.Drawing.Point(119, 555);
+            this.btnSortExtension.Location = new System.Drawing.Point(185, 458);
+            this.btnSortExtension.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSortExtension.Name = "btnSortExtension";
-            this.btnSortExtension.Size = new System.Drawing.Size(101, 23);
+            this.btnSortExtension.Size = new System.Drawing.Size(152, 35);
             this.btnSortExtension.TabIndex = 4;
             this.btnSortExtension.Text = "Sort";
             this.btnSortExtension.UseVisualStyleBackColor = true;
@@ -120,9 +123,10 @@
             // btnRemoveEmpty
             // 
             this.btnRemoveEmpty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRemoveEmpty.Location = new System.Drawing.Point(226, 555);
+            this.btnRemoveEmpty.Location = new System.Drawing.Point(346, 458);
+            this.btnRemoveEmpty.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRemoveEmpty.Name = "btnRemoveEmpty";
-            this.btnRemoveEmpty.Size = new System.Drawing.Size(101, 23);
+            this.btnRemoveEmpty.Size = new System.Drawing.Size(152, 35);
             this.btnRemoveEmpty.TabIndex = 5;
             this.btnRemoveEmpty.Text = "Remove Empty";
             this.btnRemoveEmpty.TextAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -132,9 +136,10 @@
             // btnRemoveHidden
             // 
             this.btnRemoveHidden.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRemoveHidden.Location = new System.Drawing.Point(333, 556);
+            this.btnRemoveHidden.Location = new System.Drawing.Point(507, 459);
+            this.btnRemoveHidden.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRemoveHidden.Name = "btnRemoveHidden";
-            this.btnRemoveHidden.Size = new System.Drawing.Size(101, 23);
+            this.btnRemoveHidden.Size = new System.Drawing.Size(152, 35);
             this.btnRemoveHidden.TabIndex = 6;
             this.btnRemoveHidden.Text = "Remove Hidden";
             this.btnRemoveHidden.TextAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -144,15 +149,16 @@
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(820, 590);
+            this.ClientSize = new System.Drawing.Size(1230, 508);
             this.Controls.Add(this.btnRemoveHidden);
             this.Controls.Add(this.btnRemoveEmpty);
             this.Controls.Add(this.btnSortExtension);
             this.Controls.Add(this.lvData);
             this.Controls.Add(this.lblPath);
             this.Controls.Add(this.btnChooseDirectory);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmMain";
             this.Text = "Demo 9 - Dictionary";
             this.Load += new System.EventHandler(this.frmMain_Load);

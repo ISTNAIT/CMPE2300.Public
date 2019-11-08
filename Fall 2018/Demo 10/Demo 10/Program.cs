@@ -24,6 +24,10 @@ namespace Demo_10
             Trace.WriteLine($"Velocity = {c.Velocity}");
             Trace.WriteLine($"The car named '{c}' was created");
             Trace.WriteLine("==========================");
+            Trace.WriteLine($"Car's MyName():{c.MyName()}");
+            Trace.WriteLine($"Car's MyName() after cast to Vehicle:{((Vehicle)c).MyName()}");
+            Trace.WriteLine($"Car's ToString() after cast to Vehicle:{((Vehicle)c).ToString()}");
+            Trace.WriteLine($"Car's ToString() after cast to Object:{((Object)c).ToString()}");
         }
     }
 }

@@ -36,6 +36,7 @@ namespace Demo_10
             Velocity += increment;
             return Velocity;
         }
+
         public override string ToString() //Override base class
         {
             //Base returns "thing I inherited from", so 
@@ -43,6 +44,10 @@ namespace Demo_10
             return $"Vehicle (was {base.ToString()})";
         }
 
+        public string MyName() //Non-virtual string method to show difference
+        {
+            return "Vehicle";
+        }
     }
     internal class Car:Vehicle,IComparable //Inherits from vehicle (Inherit from one class, multiple interfaces)
     {
@@ -50,6 +55,7 @@ namespace Demo_10
 
         public Car() : base(210) //Decide which base ctor to run
         {
+
             Trace.WriteLine("Car Constructing...");
         }
 
@@ -65,6 +71,11 @@ namespace Demo_10
         public override string ToString()
         {
             return $"Car with maxvel {this.MaxVelocity}(was {base.ToString()})";
+        }
+
+        public new string MyName() //Non-virtual string method to show difference
+        {
+            return "Car";
         }
 
         public int CompareTo(object obj)
