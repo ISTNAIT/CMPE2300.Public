@@ -17,13 +17,13 @@ namespace Demo_10
             set => velocity = (value > MaxVelocity) ? velocity : value;
         }
 
-        public Vehicle() 
+        public Vehicle()
         {
             Trace.WriteLine("Vehicle Constructing...");
             Velocity = 0;
             MaxVelocity = 0;
         }
-        
+
         public Vehicle(double maxVel)
         {
             MaxVelocity = maxVel;
@@ -48,8 +48,13 @@ namespace Demo_10
         {
             return "Vehicle";
         }
+
+        virtual public string Beep()
+        {
+            return "<Generic Honk/Horn/Bell>";
+        }
     }
-    internal class Car:Vehicle,IComparable //Inherits from vehicle (Inherit from one class, multiple interfaces)
+    internal class Car : Vehicle, IComparable //Inherits from vehicle (Inherit from one class, multiple interfaces)
     {
         public String VIN { get; set; }
 
@@ -64,8 +69,15 @@ namespace Demo_10
         {
             //Cars can only accelate max 10 per thing
             increment = increment > 10 ? 10 : increment;
-            Velocity = (Velocity + increment > MaxVelocity)?MaxVelocity: Velocity + increment;
+            Velocity = (Velocity + increment > MaxVelocity) ? MaxVelocity : Velocity + increment;
             return Velocity;
+        }
+
+        //Because I am overriding a virtual, this is the behaviour I will see, even if
+        //my car is cast to Vehicle (upcasting to a base class).
+        public override string Beep()
+        {
+            return "Grnghgggghhheeeeer!";
         }
 
         public override string ToString()
@@ -81,6 +93,16 @@ namespace Demo_10
         public int CompareTo(object obj)
         {
             throw new NotImplementedException();
+        }
+    }
+
+    internal class Deuxcheveux : Car
+    {
+        //Note: New instead of override, means that this will revert
+        //to car behaviour if the Deuxcheveuax is cast to Car or to Vehicle.
+        public new string Beep()
+        {
+            return "Le " + base.Beep();
         }
     }
 }
