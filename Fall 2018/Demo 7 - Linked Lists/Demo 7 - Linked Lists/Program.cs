@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Demo_7___Linked_Lists
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {
@@ -34,7 +34,7 @@ namespace Demo_7___Linked_Lists
 
 
             List<int> li = l.ToList();
-           
+
 
             LinkedListNode<int> n = l.First;
             if (!(n is null))
